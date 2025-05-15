@@ -7,6 +7,13 @@ Il permet de gérer des utilisateurs, des rôles, des formations, des centres, d
 Initier le projet Spring Boot via https://start.spring.io/
 
 
+## API REST
+C’est une façon pour deux applications de communiquer entre elles à travers Internet, en utilisant des règles simples.
+
+Avec une API REST, je peux demander, ajouter, modifier ou supprimer des informations (comme des utilisateurs ou des formations) en envoyant des requêtes avec des verbes comme GET, POST, PUT ou DELETE.
+
+C’est un moyen pratique et universel pour qu’un site web, une application mobile ou un autre programme puisse échanger des données avec ton application.
+
 -----------------------------------------------------------------------------------------------
 # 🌱 Mise en place du projet
 -----------------------------------------------------------------------------------------------
