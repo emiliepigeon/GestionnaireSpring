@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emi.GestionnaireFormation.model.Utilisateur;
-import com.emi.GestionnaireFormation.repository.FormationRepository;
-import com.emi.GestionnaireFormation.repository.RoleRepository;
 import com.emi.GestionnaireFormation.repository.UtilisateurRepository;
 
 /**
@@ -21,75 +19,70 @@ import com.emi.GestionnaireFormation.repository.UtilisateurRepository;
  * Toutes les méthodes renvoient du JSON.
  */
 @RestController
-@RequestMapping("/utilisateurs")
+@RequestMapping("/utilisateurs") // Toutes les routes commencent par /utilisateurs
 public class UtilisateurController {
 
     private final UtilisateurRepository utilisateurRepository;
-    private final RoleRepository roleRepository;
-    private final FormationRepository formationRepository;
 
-    public UtilisateurController( UtilisateurRepository utilisateurRepository, RoleRepository roleRepository,FormationRepository formationRepository) {
+    // Injection du repository via le constructeur
+    public UtilisateurController(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
-        this.roleRepository = roleRepository;
-        this.formationRepository = formationRepository;
     }
 
-    // GET /api/utilisateurs : récupère tous les utilisateurs
-    @GetMapping("/")
-    public List<Utilisateur> findAll() {
+    // GET /utilisateurs ou /utilisateurs/
+    @GetMapping({"", "/"})
+    public List<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
     }
 
-
-    // GET Récupère un utilisateur par matricule
+    // GET /utilisateurs/{matricule}
     @GetMapping("/{matricule}")
-    public Utilisateur findByMatricule(@PathVariable String matricule) {
+    public Utilisateur getUtilisateurByMatricule(@PathVariable String matricule) {
         return utilisateurRepository.findByMatricule(matricule);
     }
 
-    // Crée un nouvel utilisateur
+    // POST /utilisateurs/create
     @PostMapping("/create")
-    public void add(@RequestBody Utilisateur utilisateur) {
-        utilisateurRepository.save(utilisateur);
+    public Utilisateur createUtilisateur(@RequestBody Utilisateur utilisateur) {
+        return utilisateurRepository.save(utilisateur);
     }
 
-    // PUT /api/utilisateurs/{id} : modifie un utilisateur existant
-    // Met à jour un utilisateur existant
+    // PUT /utilisateurs/update/{matricule}
     @PutMapping("/update/{matricule}")
-    public void update(@PathVariable String matricule, @RequestBody Utilisateur utilisateur) {
-        Utilisateur existingUser = utilisateurRepository.findByMatricule(matricule);
-        if (existingUser != null) {
-            existingUser.setMatricule(utilisateur.getMatricule());
-            existingUser.setNom(utilisateur.getNom());
-            existingUser.setPrenom(utilisateur.getPrenom());
-            existingUser.setAdresseMail(utilisateur.getAdresseMail());
-            existingUser.setAdressePostal(utilisateur.getAdressePostal());
-            existingUser.setCodePostal(utilisateur.getCodePostal());
-            existingUser.setVille(utilisateur.getVille());
-            existingUser.setMotDePasse(utilisateur.getMotDePasse());
-            existingUser.setStatut(utilisateur.getStatut());
-            existingUser.setRole(utilisateur.getRole());
-            existingUser.setFormation(utilisateur.getFormation());
-            utilisateurRepository.save(existingUser);
+    public Utilisateur updateUtilisateur(@PathVariable String matricule, @RequestBody Utilisateur details) {
+        Utilisateur utilisateur = utilisateurRepository.findByMatricule(matricule);
+        if (utilisateur != null) {
+            utilisateur.setNom(details.getNom());
+            utilisateur.setPrenom(details.getPrenom());
+            utilisateur.setAdresseMail(details.getAdresseMail());
+            utilisateur.setAdressePostal(details.getAdressePostal());
+            utilisateur.setCodePostal(details.getCodePostal());
+            utilisateur.setVille(details.getVille());
+            utilisateur.setMotDePasse(details.getMotDePasse());
+            utilisateur.setStatut(details.getStatut());
+            utilisateur.setRole(details.getRole());
+            return utilisateurRepository.save(utilisateur);
         }
+        return null;
     }
 
-    // Supprime un utilisateur
+    // DELETE /utilisateurs/delete/{matricule}
     @DeleteMapping("/delete/{matricule}")
-    public void delete(@PathVariable String matricule) {
-        Utilisateur user = utilisateurRepository.findByMatricule(matricule);
-        if (user != null) {
-            utilisateurRepository.delete(user);
+    public void deleteUtilisateur(@PathVariable String matricule) {
+        Utilisateur utilisateur = utilisateurRepository.findByMatricule(matricule);
+        if (utilisateur != null) {
+            utilisateurRepository.delete(utilisateur);
         }
     }
 
-    // Désactive un utilisateur
+    // PUT /utilisateurs/disable/{matricule}
     @PutMapping("/disable/{matricule}")
-    public void disable(@PathVariable String matricule) {
-        Utilisateur user = utilisateurRepository.findByMatricule(matricule);
-        if (user != null) {
-            user.setStatut(false);
-            utilisateurRepository.save(user);
+    public Utilisateur disableUtilisateur(@PathVariable String matricule) {
+        Utilisateur utilisateur = utilisateurRepository.findByMatricule(matricule);
+        if (utilisateur != null) {
+            utilisateur.setStatut(false);
+            return utilisateurRepository.save(utilisateur);
         }
+        return null;
     }
 }

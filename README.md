@@ -95,6 +95,43 @@ Switched to branch 'Api_V1'
 
 Je vais pousser ma nouvelle branche:
 $ git status
+$ git add .
+$ git commit -m "Initialisation de ma branche de travail Api_V1"
+$ git branch -r
+$ git push -u origin Api_V1
 
+Je vais creer mes 2 entités utilisateur et rôle avec mes relations et jointure :
+
+1 -> le model
+2 -> le repository
+3 -> le service
+4 -> le controller
+
+Résumé des endpoints à tester avec Postman
+
+    GET /roles/ → liste tous les rôles
+
+    GET /roles/{id} → un rôle par id
+
+    POST /roles/create → crée un rôle (body JSON : { "libelle": "stagiaire", "statut": true })
+
+    PUT /roles/update/{id} → modifie un rôle
+
+    DELETE /roles/delete/{id} → supprime un rôle
+
+
+ À tester dans Postman
+
+    GET http://localhost:8080/utilisateurs/ → liste tous les utilisateurs
+
+    GET http://localhost:8080/utilisateurs/STG011 → détail d’un utilisateur
+
+    POST http://localhost:8080/utilisateurs/create (avec un body JSON)
+
+    PUT http://localhost:8080/utilisateurs/update/STG011 (avec un body JSON)
+
+    DELETE http://localhost:8080/utilisateurs/delete/STG011
+
+    PUT http://localhost:8080/utilisateurs/disable/STG011
 
 
