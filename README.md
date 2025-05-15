@@ -59,3 +59,42 @@ git status
 git add .
 git commit -m "message"
 git push
+
+C'est fait!
+Je vérifie sur mon GitHub.
+
+Tout est Ok.
+
+Mon gitignore est lui aussi bien pris en compte.
+
+# Consignes du formateur pour la suite:
+Pour le 20 mai 2025
+- Il faut que pour mardi prochain en présentiel afin de pouvoir avancer soit terminé les modules API suivant : utilisateur, rôle, formation, module, et séquence  + un GitHub propre !
+
+# Structure de base du projet
+src/main/java
+└── com/emi/GestionnaireFormation/
+    ├── controller/
+    ├── model/
+    ├── repository/
+    ├── service/
+    └── GestionnaireFormationApplication.java
+
+# Je créer une nouvelle branche de travail
+$ git branch [non de la nouvelle branche de travail]
+
+$ git branch
+  Api_V1
+* main
+
+$ git checkout Api_V1
+M       README.md
+Switched to branch 'Api_V1'
+
+# Je suis dans ma nouvelle branche de travail
+
+Je vais pousser ma nouvelle branche:
+$ git status
+
+
+
