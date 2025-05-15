@@ -217,11 +217,8 @@ ________________________________________________________________________________
 
 Suite
 
-Aprés la créa de chaque nouvelle entité
+Aprés la créa de chaque nouvelle entité :
 
-Je sais pas pourquoi, je doit fermer Vs Code puis le réouvrir.
-
-Puis:
 - mvn clean install
 - mvn spring-boot:run
 
@@ -273,7 +270,7 @@ PUT http://localhost:8080/modules/update/1
 
 DELETE http://localhost:8080/modules/delete/1
 
-
+------------------------------------
 src/
 └── main/
     ├── java/
@@ -309,3 +306,31 @@ src/
         ├── application.properties
         └── ... (autres fichiers de config, templates, etc.)
 
+-------------------------------------
+
+ À tester dans Postman
+
+    GET http://localhost:8080/sequences/ → liste toutes les séquences
+
+    GET http://localhost:8080/sequences/1 → détail d'une séquence
+
+    GET http://localhost:8080/sequences/module/1 → toutes les séquences d’un module
+
+    POST http://localhost:8080/sequences/create
+    (Body JSON exemple :)
+
+json
+{
+  "libelle": "Séquence 1",
+  "description": "Introduction à la POO",
+  "ordre": 1,
+  "statut": true,
+  "module": { "id": 1 }
+}
+
+PUT http://localhost:8080/sequences/update/1
+(Body JSON, même format)
+
+DELETE http://localhost:8080/sequences/delete/1
+
+-------------------------------
