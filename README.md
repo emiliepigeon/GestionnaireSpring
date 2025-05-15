@@ -1,5 +1,6 @@
 
 # Premier API
+Ceci est un journal de travail et non une documentation de l'API.
 
 15/05/2025
 
@@ -248,3 +249,63 @@ PUT http://localhost:8080/centres/update/1
 (Body JSON, même format)
 
 DELETE http://localhost:8080/centres/delete/1
+
+----------------------------------------
+
+À tester dans Postman
+
+    GET http://localhost:8080/modules/ → liste tous les modules
+
+    GET http://localhost:8080/modules/1 → détail d'un module
+
+    POST http://localhost:8080/modules/create
+    (Body JSON exemple :)
+
+json
+{
+  "nom": "Module Java",
+  "description": "Introduction à Java et POO",
+  "statut": true
+}
+
+PUT http://localhost:8080/modules/update/1
+(Body JSON, même format)
+
+DELETE http://localhost:8080/modules/delete/1
+
+
+src/
+└── main/
+    ├── java/
+    │   └── com/
+    │       └── emi/
+    │           └── GestionnaireFormation/
+    │               ├── model/
+    │               │   ├── Utilisateur.java
+    │               │   ├── Role.java
+    │               │   ├── Formation.java
+    │               │   ├── Centre.java
+    │               │   └── Module.java
+    │               ├── repository/
+    │               │   ├── UtilisateurRepository.java
+    │               │   ├── RoleRepository.java
+    │               │   ├── FormationRepository.java
+    │               │   ├── CentreRepository.java
+    │               │   └── ModuleRepository.java
+    │               ├── service/
+    │               │   ├── UtilisateurService.java
+    │               │   ├── RoleService.java
+    │               │   ├── FormationService.java
+    │               │   ├── CentreService.java
+    │               │   └── ModuleService.java
+    │               ├── controller/
+    │               │   ├── UtilisateurController.java
+    │               │   ├── RoleController.java
+    │               │   ├── FormationController.java
+    │               │   ├── CentreController.java
+    │               │   └── ModuleController.java
+    │               └── GestionnaireFormationApplication.java
+    └── resources/
+        ├── application.properties
+        └── ... (autres fichiers de config, templates, etc.)
+

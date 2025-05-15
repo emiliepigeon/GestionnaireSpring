@@ -6,5 +6,5 @@ import com.emi.GestionnaireFormation.model.Formation;
 
 // Interface pour accéder à la table formation
 public interface FormationRepository extends JpaRepository<Formation, Long> {
-    // Tu peux ajouter des méthodes personnalisées ici si besoin
+    // Je peux ajouter des méthodes personnalisées ici si besoin
 }
