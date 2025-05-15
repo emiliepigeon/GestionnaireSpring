@@ -59,3 +59,79 @@ git status
 git add .
 git commit -m "message"
 git push
+
+C'est fait!
+Je vérifie sur mon GitHub.
+
+Tout est Ok.
+
+Mon gitignore est lui aussi bien pris en compte.
+
+# Consignes du formateur pour la suite:
+Pour le 20 mai 2025
+- Il faut que pour mardi prochain en présentiel afin de pouvoir avancer soit terminé les modules API suivant : utilisateur, rôle, formation, module, et séquence  + un GitHub propre !
+
+# Structure de base du projet
+src/main/java
+└── com/emi/GestionnaireFormation/
+    ├── controller/
+    ├── model/
+    ├── repository/
+    ├── service/
+    └── GestionnaireFormationApplication.java
+
+# Je créer une nouvelle branche de travail
+$ git branch [non de la nouvelle branche de travail]
+
+$ git branch
+  Api_V1
+* main
+
+$ git checkout Api_V1
+M       README.md
+Switched to branch 'Api_V1'
+
+# Je suis dans ma nouvelle branche de travail
+
+Je vais pousser ma nouvelle branche:
+$ git status
+$ git add .
+$ git commit -m "Initialisation de ma branche de travail Api_V1"
+$ git branch -r
+$ git push -u origin Api_V1
+
+Je vais creer mes 2 entités utilisateur et rôle avec mes relations et jointure :
+
+1 -> le model
+2 -> le repository
+3 -> le service
+4 -> le controller
+
+Résumé des endpoints à tester avec Postman
+
+    GET /roles/ → liste tous les rôles
+
+    GET /roles/{id} → un rôle par id
+
+    POST /roles/create → crée un rôle (body JSON : { "libelle": "stagiaire", "statut": true })
+
+    PUT /roles/update/{id} → modifie un rôle
+
+    DELETE /roles/delete/{id} → supprime un rôle
+
+
+ À tester dans Postman
+
+    GET http://localhost:8080/utilisateurs/ → liste tous les utilisateurs
+
+    GET http://localhost:8080/utilisateurs/STG011 → détail d’un utilisateur
+
+    POST http://localhost:8080/utilisateurs/create (avec un body JSON)
+
+    PUT http://localhost:8080/utilisateurs/update/STG011 (avec un body JSON)
+
+    DELETE http://localhost:8080/utilisateurs/delete/STG011
+
+    PUT http://localhost:8080/utilisateurs/disable/STG011
+
+

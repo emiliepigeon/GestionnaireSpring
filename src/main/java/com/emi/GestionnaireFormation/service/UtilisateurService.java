@@ -7,34 +7,25 @@ import org.springframework.stereotype.Service;
 import com.emi.GestionnaireFormation.model.Utilisateur;
 import com.emi.GestionnaireFormation.repository.UtilisateurRepository;
 
-/**
- * Service pour la gestion des utilisateurs.
- */
+// Je crée une classe UtilisateurService annotée @Service
 @Service
 public class UtilisateurService {
+
     private final UtilisateurRepository utilisateurRepository;
 
+    // Constructeur pour l’injection du repository
     public UtilisateurService(UtilisateurRepository utilisateurRepository) {
         this.utilisateurRepository = utilisateurRepository;
     }
 
-    // Retourne tous les utilisateurs
-    public List<Utilisateur> findAll() {
+    // Méthode pour récupérer tous les utilisateurs
+    public List<Utilisateur> getAllUtilisateurs() {
         return utilisateurRepository.findAll();
     }
 
-    // Retourne un utilisateur par son id
+    // Méthode pour récupérer un utilisateur par matricule
     public Utilisateur findByMatricule(String matricule) {
-        return utilisateurRepository.findByMatricule(matricule).orElse(null);
+        return utilisateurRepository.findByMatricule(matricule);
     }
 
-    // Ajoute ou modifie un utilisateur
-    public Utilisateur save(Utilisateur utilisateur) {
-        return utilisateurRepository.save(utilisateur);
-    }
-
-    // Supprime un utilisateur par son id
-    public void deleteByMatricule(String matricule) {
-        utilisateurRepository.deleteByMatricule(matricule);
-    }
 }
