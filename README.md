@@ -100,25 +100,14 @@ $ git commit -m "Initialisation de ma branche de travail Api_V1"
 $ git branch -r
 $ git push -u origin Api_V1
 
-Je vais creer mes 2 entités utilisateur et rôle avec mes relations et jointure :
+Je vais creer mes entités (avec leurs CRUD) et  avec mes relations avec jointures :
 
 1 -> le model
 2 -> le repository
 3 -> le service
 4 -> le controller
 
-Résumé des endpoints à tester avec Postman
-
-    GET /roles/ → liste tous les rôles
-
-    GET /roles/{id} → un rôle par id
-
-    POST /roles/create → crée un rôle (body JSON : { "libelle": "stagiaire", "statut": true })
-
-    PUT /roles/update/{id} → modifie un rôle
-
-    DELETE /roles/delete/{id} → supprime un rôle
-
+-------------------------------------------------------------------------------
 
  À tester dans Postman
 
@@ -135,3 +124,127 @@ Résumé des endpoints à tester avec Postman
     PUT http://localhost:8080/utilisateurs/disable/STG011
 
 
+
+Résumé des endpoints à tester avec Postman
+
+    GET /roles/ → liste tous les rôles
+
+    GET /roles/{id} → un rôle par id
+
+    POST /roles/create → crée un rôle (body JSON : { "libelle": "stagiaire", "statut": true })
+
+    PUT /roles/update/{id} → modifie un rôle
+
+    DELETE /roles/delete/{id} → supprime un rôle
+
+
+
+À tester dans Postman
+
+    GET http://localhost:8080/formations/ → liste toutes les formations
+
+    GET http://localhost:8080/formations/1 → détail d'une formation
+
+    POST http://localhost:8080/formations/create
+    (Body JSON, exemple :)
+
+json
+{
+  "libelle": "Nouveau titre",
+  "numeroOffre": "ABC123",
+  "dateDebut": "2025-06-01",
+  "dateFin": "2025-07-01",
+  "dateDebutPe": "2025-06-05",
+  "dateFinPe": "2025-06-30",
+  "statut": true
+}
+
+PUT http://localhost:8080/formations/update/1 
+(Body JSON, même format)
+
+DELETE http://localhost:8080/formations/delete/1
+
+___________________________________________________________________________________
+
+src/
+└── main/
+    └── java/
+        └── com/
+            └── emi/
+                └── GestionnaireFormation/
+                    ├── model/
+                    │   ├── Utilisateur.java
+                    │   ├── Role.java
+                    │   └── Formation.java
+                    ├── repository/
+                    │   ├── UtilisateurRepository.java
+                    │   ├── RoleRepository.java
+                    │   └── FormationRepository.java
+                    ├── service/
+                    │   ├── UtilisateurService.java
+                    │   ├── RoleService.java
+                    │   └── FormationService.java
+                    ├── controller/
+                    │   ├── UtilisateurController.java
+                    │   ├── RoleController.java
+                    │   └── FormationController.java
+                    └── GestionnaireFormationApplication.java
+
+Conseils pour éviter les conflits
+
+    Toujours un seul public class par fichier (le nom du fichier == nom de la classe).
+
+    Pas deux classes avec le même nom dans le même package.
+
+    Utilise les packages pour séparer les rôles (voir ci-dessus).
+
+    Ne jamais mélanger plusieurs classes dans un même fichier (sauf classes internes privées, mais ce n’est pas utile ici).
+
+
+Résumé
+
+    Un fichier = une classe publique
+
+    Nom du fichier = nom de la classe
+
+    Sépare bien tes packages (model, repository, service, controller)
+
+    Pas de doublon de nom de classe dans le même package
+
+
+________________________________________________________________________________
+
+Suite
+
+Aprés la créa de chaque nouvelle entité
+
+Je sais pas pourquoi, je doit fermer Vs Code puis le réouvrir.
+
+Puis:
+- mvn clean install
+- mvn spring-boot:run
+
+-------------------------------------
+
+À tester dans Postman
+
+    GET http://localhost:8080/centres/ → liste tous les centres
+
+    GET http://localhost:8080/centres/1 → détail d'un centre
+
+    POST http://localhost:8080/centres/create
+    (Body JSON exemple :)
+
+json
+{
+  "nom": "Centre de Paris",
+  "adresse": "10 rue de Paris",
+  "codePostal": "75000",
+  "ville": "Paris",
+  "statut": true
+}
+
+PUT http://localhost:8080/centres/update/1
+(Body JSON, même format)
+
+DELETE http://localhost:8080/centres/delete/1
