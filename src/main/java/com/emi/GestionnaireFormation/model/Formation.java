@@ -1,5 +1,7 @@
 package com.emi.GestionnaireFormation.model;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,28 +17,30 @@ public class Formation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Le libellé de la formation (ex: "CDA")
     @Column(nullable = false)
     private String libelle;
 
-    @Column(nullable = false)
+    // Le numéro d'offre de la formation
+    @Column(name = "numero_offre", nullable = false)
     private String numeroOffre;
 
-    @Column(nullable = false)
-    private java.sql.Date dateDebut;
+    // Dates de la formation
+    @Column(name = "date_debut", nullable = false)
+    private LocalDate dateDebut;
 
-    @Column(nullable = false)
-    private java.sql.Date dateFin;
+    @Column(name = "date_fin", nullable = false)
+    private LocalDate dateFin;
 
-    @Column(nullable = false)
-    private java.sql.Date dateDebutPe;
+    @Column(name = "date_debut_pe", nullable = false)
+    private LocalDate dateDebutPe;
 
-    @Column(nullable = false)
-    private java.sql.Date dateFinPe;
+    @Column(name = "date_fin_pe", nullable = false)
+    private LocalDate dateFinPe;
 
+    // Statut (actif ou non)
     @Column(nullable = false)
     private Boolean statut;
-
-    // Ajoute d'autres champs si besoin, selon ta table SQL
 
     // Constructeur vide obligatoire pour JPA
     public Formation() {}
@@ -47,14 +51,14 @@ public class Formation {
     public void setLibelle(String libelle) { this.libelle = libelle; }
     public String getNumeroOffre() { return numeroOffre; }
     public void setNumeroOffre(String numeroOffre) { this.numeroOffre = numeroOffre; }
-    public java.sql.Date getDateDebut() { return dateDebut; }
-    public void setDateDebut(java.sql.Date dateDebut) { this.dateDebut = dateDebut; }
-    public java.sql.Date getDateFin() { return dateFin; }
-    public void setDateFin(java.sql.Date dateFin) { this.dateFin = dateFin; }
-    public java.sql.Date getDateDebutPe() { return dateDebutPe; }
-    public void setDateDebutPe(java.sql.Date dateDebutPe) { this.dateDebutPe = dateDebutPe; }
-    public java.sql.Date getDateFinPe() { return dateFinPe; }
-    public void setDateFinPe(java.sql.Date dateFinPe) { this.dateFinPe = dateFinPe; }
+    public LocalDate getDateDebut() { return dateDebut; }
+    public void setDateDebut(LocalDate dateDebut) { this.dateDebut = dateDebut; }
+    public LocalDate getDateFin() { return dateFin; }
+    public void setDateFin(LocalDate dateFin) { this.dateFin = dateFin; }
+    public LocalDate getDateDebutPe() { return dateDebutPe; }
+    public void setDateDebutPe(LocalDate dateDebutPe) { this.dateDebutPe = dateDebutPe; }
+    public LocalDate getDateFinPe() { return dateFinPe; }
+    public void setDateFinPe(LocalDate dateFinPe) { this.dateFinPe = dateFinPe; }
     public Boolean getStatut() { return statut; }
     public void setStatut(Boolean statut) { this.statut = statut; }
 }
