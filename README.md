@@ -1,10 +1,10 @@
 ## Gestionnaire de Formation – Projet Spring Boot
 
-Ce projet est une API web réalisée en Java avec le framework Spring Boot.
+Ce projet est une API rest réalisée en Java avec le framework Spring Boot.
 
 Il permet de gérer des utilisateurs, des rôles, des formations, des centres, des modules et des séquences de formation.
 
-Initier le projet Spring Boot via https://start.spring.io/
+Ce projeta été initier via Spring Boot via https://start.spring.io/
 
 
 ## API REST
@@ -12,7 +12,7 @@ C’est une façon pour deux applications de communiquer entre elles à travers 
 
 Avec une API REST, je peux demander, ajouter, modifier ou supprimer des informations (comme des utilisateurs ou des formations) en envoyant des requêtes avec des verbes comme GET, POST, PUT ou DELETE.
 
-C’est un moyen pratique et universel pour qu’un site web, une application mobile ou un autre programme puisse échanger des données avec ton application.
+C’est un moyen pratique et universel pour qu’un site web, une application mobile ou un autre programme puisse échanger des données avec mon application.
 
 -----------------------------------------------------------------------------------------------
 # 🌱 Mise en place du projet
@@ -30,7 +30,7 @@ C’est un moyen pratique et universel pour qu’un site web, une application mo
 
 -----------------------------------------------------------------------------------------------
 
-2. Crée la base de données (exemple avec MySQL) : via PhpMyAdmin
+2. Créer la base de données (exemple avec MySQL) : via PhpMyAdmin
 
 sql
     CREATE DATABASE gestionnaire_formation CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -40,7 +40,7 @@ sql
 
 -----------------------------------------------------------------------------------------------
 
-3. Configure la connexion à la base de données dans le fichier 
+3. Configurer la connexion à la base de données dans le fichier 
 src/main/resources/application.properties :
 
 text :
@@ -50,7 +50,7 @@ text :
 
 -----------------------------------------------------------------------------------------------
 
-4. Lance le projet :
+4. Lancer le projet :
 
     Avec Maven :
 
@@ -60,7 +60,7 @@ text :
 
 -----------------------------------------------------------------------------------------------
 
-5. Teste l’API avec Postman ou un navigateur.
+5. Tester l’API avec Postman ou un navigateur.
 https://www.postman.com/
 
 
@@ -95,7 +95,7 @@ src/main/java/com/emi/GestionnaireFormation/
 -----------------------------------------------------------------------------------------------
 ## 🛣️ Exemples d’URL (endpoints)
     Endpoint :
-    Un endpoint est une « adresse » (URL) d’une API à laquelle tu peux envoyer une requête HTTP (GET, POST, PUT, etc.) pour accéder à une ressource ou effectuer une action (ex : obtenir la liste des utilisateurs, créer un rôle, désactiver un module…).
+    Un endpoint est une « adresse » (URL) d’une API à laquelle je peux envoyer une requête HTTP (GET, POST, PUT, etc.) pour accéder à une ressource ou effectuer une action (ex : obtenir la liste des utilisateurs, créer un rôle, désactiver un module…).
 
     C’est le point d’entrée de l'application pour communiquer avec elle depuis un client (navigateur, Postman, autre application…).
 -----------------------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ src/main/java/com/emi/GestionnaireFormation/
 ## 💡 Notions utiles
 -----------------------------------------------------------------------------------------------
 
-    Entité : classe Java qui représente une table SQL (ex : Utilisateur, Role…)
+    Entité (model) : classe Java qui représente une table SQL (ex : Utilisateur, Role…)
 
     Repository : interface pour accéder à la base de données (CRUD)
 
