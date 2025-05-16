@@ -40,9 +40,12 @@ public class CentreService {
     public Optional<Centre> updateCentre(Long id, Centre details) {
         return centreRepository.findById(id).map(centre -> {
             centre.setNom(details.getNom());
+            centre.setAdressePostal(details.getAdressePostal());
             centre.setAdresse(details.getAdresse());
             centre.setCodePostal(details.getCodePostal());
             centre.setVille(details.getVille());
+            centre.setTelephone(details.getTelephone());
+            centre.setLibelle(details.getLibelle());
             centre.setStatut(details.getStatut());
             return centreRepository.save(centre);
         });

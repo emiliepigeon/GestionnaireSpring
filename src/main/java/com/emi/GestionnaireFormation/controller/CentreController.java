@@ -47,8 +47,8 @@ public class CentreController {
         return centreService.createCentre(centre);
     }
 
-    // PUT /centres/update/{id}
-    @PutMapping("/update/{id}")
+    // PUT /centres/update/{id} et /centres/{id}
+    @PutMapping({"/update/{id}", "/{id}"})
     public Optional<Centre> updateCentre(@PathVariable Long id, @RequestBody Centre details) {
         return centreService.updateCentre(id, details);
     }

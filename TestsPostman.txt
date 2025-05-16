@@ -385,11 +385,14 @@ POST > CREER / CREATE
 
 Body JSON :
 {
-  "nom": "Centre de Paris",
-  "adresse": "10 rue de Paris",
-  "codePostal": "75000",
-  "ville": "Paris",
-  "statut": true
+  "nom": "Candau",
+  "adressePostal": "9, rue Ferdinand de Candau",
+  "ville": "Mont-de-Marsan",
+  "codePostal": "40000",
+  "telephone": "0005532154",
+  "libelle": "1",
+  "adresse": "",
+  "statut": false
 }
 
 ____________________________________________________________________________________________

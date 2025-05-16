@@ -22,19 +22,31 @@ public class Centre {
     @Column(nullable = false)
     private String nom;
 
-    // Adresse du centre
-    @Column(nullable = false)
-    private String adresse;
-
-    // Code postal du centre
-    @Column(name = "code_postal", nullable = false)
-    private String codePostal;
+    // Adresse postale du centre
+    @Column(name = "adresse_postal", nullable = false)
+    private String adressePostal;
 
     // Ville du centre
     @Column(nullable = false)
     private String ville;
 
-    // Statut actif ou non
+    // Code postal du centre
+    @Column(name = "code_postal", nullable = false)
+    private String codePostal;
+
+    // Numéro de téléphone du centre
+    @Column(nullable = false)
+    private String telephone;
+
+    // Libellé du centre (peut être null)
+    @Column(name = "libelle")
+    private String libelle;
+
+    // Adresse du centre (champ distinct de adresse_postal)
+    @Column(nullable = false)
+    private String adresse;
+
+    // Statut actif ou non (bit(1) en base, Boolean ici)
     @Column(nullable = false)
     private Boolean statut;
 
@@ -45,12 +57,18 @@ public class Centre {
     public Long getId() { return id; }
     public String getNom() { return nom; }
     public void setNom(String nom) { this.nom = nom; }
-    public String getAdresse() { return adresse; }
-    public void setAdresse(String adresse) { this.adresse = adresse; }
-    public String getCodePostal() { return codePostal; }
-    public void setCodePostal(String codePostal) { this.codePostal = codePostal; }
+    public String getAdressePostal() { return adressePostal; }
+    public void setAdressePostal(String adressePostal) { this.adressePostal = adressePostal; }
     public String getVille() { return ville; }
     public void setVille(String ville) { this.ville = ville; }
+    public String getCodePostal() { return codePostal; }
+    public void setCodePostal(String codePostal) { this.codePostal = codePostal; }
+    public String getTelephone() { return telephone; }
+    public void setTelephone(String telephone) { this.telephone = telephone; }
+    public String getLibelle() { return libelle; }
+    public void setLibelle(String libelle) { this.libelle = libelle; }
+    public String getAdresse() { return adresse; }
+    public void setAdresse(String adresse) { this.adresse = adresse; }
     public Boolean getStatut() { return statut; }
     public void setStatut(Boolean statut) { this.statut = statut; }
 }
