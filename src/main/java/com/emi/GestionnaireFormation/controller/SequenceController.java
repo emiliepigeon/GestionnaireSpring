@@ -63,4 +63,17 @@ public class SequenceController {
     public void deleteSequence(@PathVariable Long id) {
         sequenceService.deleteSequence(id);
     }
+
+    // PUT /sequences/disable/{id} : désactiver une séquence (statut à false)
+    @PutMapping("/disable/{id}")
+    public Optional<Sequence> disableSequence(@PathVariable Long id) {
+        Optional<Sequence> optionalSequence = sequenceService.getSequenceById(id);
+        if (optionalSequence.isPresent()) {
+            Sequence sequence = optionalSequence.get();
+            sequence.setStatut(false); // On met le statut à false pour désactiver la séquence
+            return Optional.of(sequenceService.createSequence(sequence)); // On sauvegarde la modification
+        } else {
+            return Optional.empty(); // Séquence non trouvée
+        }
+    }
 }

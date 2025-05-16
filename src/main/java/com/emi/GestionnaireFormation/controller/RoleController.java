@@ -2,12 +2,20 @@
 
 package com.emi.GestionnaireFormation.controller;
 
-import com.emi.GestionnaireFormation.model.Role;
-import com.emi.GestionnaireFormation.repository.RoleRepository;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.emi.GestionnaireFormation.model.Role;
+import com.emi.GestionnaireFormation.repository.RoleRepository;
 
 // Ce contrôleur gère les requêtes HTTP pour l'entité Role
 @RestController
@@ -59,5 +67,18 @@ public class RoleController {
     @DeleteMapping("/delete/{id}")
     public void deleteRole(@PathVariable Long id) {
         roleRepository.deleteById(id);
+    }
+
+    // PUT /roles/disable/{id} : désactiver un rôle (mettre statut à false)
+    @PutMapping("/disable/{id}")
+    public Role disableRole(@PathVariable Long id) {
+        Optional<Role> optionalRole = roleRepository.findById(id);
+        if (optionalRole.isPresent()) {
+            Role role = optionalRole.get();
+            role.setStatut(false); // On met le statut à false pour désactiver le rôle
+            return roleRepository.save(role);
+        } else {
+            return null; // Ou tu peux gérer l'erreur autrement
+        }
     }
 }

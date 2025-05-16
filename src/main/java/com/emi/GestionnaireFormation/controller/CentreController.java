@@ -58,4 +58,17 @@ public class CentreController {
     public void deleteCentre(@PathVariable Long id) {
         centreService.deleteCentre(id);
     }
+
+    // PUT /centres/disable/{id} : désactiver un centre (statut à false)
+    @PutMapping("/disable/{id}")
+    public Optional<Centre> disableCentre(@PathVariable Long id) {
+        Optional<Centre> optionalCentre = centreService.getCentreById(id);
+        if (optionalCentre.isPresent()) {
+            Centre centre = optionalCentre.get();
+            centre.setStatut(false); // On met le statut à false pour désactiver le centre
+            return Optional.of(centreService.createCentre(centre)); // On sauvegarde la modification
+        } else {
+            return Optional.empty(); // Centre non trouvé
+        }
+    }
 }

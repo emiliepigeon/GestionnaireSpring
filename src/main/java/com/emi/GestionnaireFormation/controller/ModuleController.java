@@ -58,4 +58,17 @@ public class ModuleController {
     public void deleteModule(@PathVariable Long id) {
         moduleService.deleteModule(id);
     }
+
+    // PUT /modules/disable/{id} : désactiver un module (statut à false)
+    @PutMapping("/disable/{id}")
+    public Optional<Module> disableModule(@PathVariable Long id) {
+        Optional<Module> optionalModule = moduleService.getModuleById(id);
+        if (optionalModule.isPresent()) {
+            Module module = optionalModule.get();
+            module.setStatut(false); // On met le statut à false pour désactiver le module
+            return Optional.of(moduleService.createModule(module)); // On sauvegarde la modification
+        } else {
+            return Optional.empty(); // Module non trouvé
+        }
+    }
 }

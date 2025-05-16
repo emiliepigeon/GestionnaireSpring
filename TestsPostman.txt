@@ -218,7 +218,7 @@ ________________________________________________________________________________
 
 DELETE [ NE JAMAIS UTILISER SAUF EXCEPTION ] > SUPPRMIMER = NO RETURN
 
-    DELETE http://localhost:8080/utilisateurs/delete/STG011 → Supprimer un utilisateur
+    DELETE http://localhost:8080/utilisateurs/delete/STG020 → Supprimer un utilisateur
 
 Retour :
 Aucun contenu (code HTTP 200 ou 204), ou parfois un message de confirmation selon le contrôleur.

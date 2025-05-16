@@ -247,7 +247,19 @@ src/
 -----------------------------------------------------------------------------------------
 
 
+Vendredi 16 mai 2025
 
+Après avoir recommencé le projet car depuis le 5 mai 
+la consigne du formateur manquant de précision et d'explication, 
+je n'avais compris que nous devions réaliser une API REST et non un application.
+
+Aujourd'hui je vais effectuer tout mes tests avec Postman.
+
+Je joindrez un postmantest.pdf à se projet puis je synchroniserai mes dépôts 
+pour que ce document soit disponnible sur GitHub.
+
+
+---------------------------------------------------------------------------------------------
 
 
 

@@ -59,4 +59,17 @@ public class FormationController {
     public void deleteFormation(@PathVariable Long id) {
         formationService.deleteFormation(id);
     }
+
+    // PUT /formations/disable/{id} : désactiver une formation (statut à false)
+    @PutMapping("/disable/{id}")
+    public Optional<Formation> disableFormation(@PathVariable Long id) {
+        Optional<Formation> optionalFormation = formationService.getFormationById(id);
+        if (optionalFormation.isPresent()) {
+            Formation formation = optionalFormation.get();
+            formation.setStatut(false); // On met le statut à false pour désactiver la formation
+            return Optional.of(formationService.createFormation(formation)); // On sauvegarde la modification
+        } else {
+            return Optional.empty(); // Formation non trouvée
+        }
+    }
 }
